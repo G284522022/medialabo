@@ -1,9 +1,9 @@
 body {
-    background-color:　rgba(200, 255, 50, 0.5);
+    background-color: rgba(255, 204, 0, 0.239);
 }
 h1{
     font-family: serif;
-    text-shadow: blue 2px 5px;
+    text-shadow: rgb(20, 181, 255) 1px 0 10px;
 }
 h2{
     font-family: monospace;
