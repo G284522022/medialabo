@@ -200,5 +200,9 @@ let data = {
 };
 
 /////////// 課題3-2 ここからプログラムを書こう
-console.lot(name)
-
+yobidashi();
+function yobidashi{
+  for (let s of data.shop) {
+    console.log(s.name_kana)
+  }
+}
