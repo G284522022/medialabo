@@ -200,9 +200,6 @@ let data = {
 };
 
 /////////// 課題3-2 ここからプログラムを書こう
-yobidashi();
-function yobidashi{
-  for (let s of data.shop) {
-    console.log(s.name_kana)
-  }
+for (let s of data.shop) {
+  console.log(s.name_kana)
 }
