@@ -200,6 +200,11 @@ let data = {
 };
 
 /////////// 課題3-2 ここからプログラムを書こう
-for (let s of data.shop) {
-  console.log(s.name_kana)
+//let d = data.results.shop.name;
+let r of data.results;
+for(let r of data.results){
+  for(let s of r.shop){
+    console.log(s.name)
+  }
 }
+
