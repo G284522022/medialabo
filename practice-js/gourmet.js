@@ -200,7 +200,6 @@ let data = {
 };
 
 /////////// 課題3-2 ここからプログラムを書こう
-//let d = data.results.shop.name;
 for(let n of data.results){
   for(let s of n.shop){
     console.log(s.name);
