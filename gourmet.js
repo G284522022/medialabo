@@ -201,10 +201,9 @@ let data = {
 
 /////////// 課題3-2 ここからプログラムを書こう
 //let d = data.results.shop.name;
-let r = f data.results;
-for(let r of data.results){
-  for(let s of r.shop){
-    console.log(s.name)
+for(let n of data.results){
+  for(let s of n.shop){
+    console.log(s.name);
   }
 }
 
