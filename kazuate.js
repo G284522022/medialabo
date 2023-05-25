@@ -1,6 +1,9 @@
 let kotae = Math.floor(Math.random()*10) + 1;
 console.log('答え（デバッグ用）: ' + kotae);
-
+let w = document.querySelector('p');			// li#whale 要素を検索
+w.remove();
+let p = document.createElement('button');				// 新しい p要素を作成
+p.textContent = '七面鳥';
 // 入力回数（予想回数）
 let kaisu = 1;
 
@@ -38,4 +41,5 @@ function hantei() {
   // 課題3-1: 正解判定する
   // kotae と yoso が一致するかどうか調べて結果を出力
   // 課題3-1における出力先はコンソール
+
 }
