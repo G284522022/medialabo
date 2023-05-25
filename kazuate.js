@@ -18,7 +18,6 @@ function hantei() {
     if(yoso === kotae){
       let p4 = document.querySelector('p#result');
       p4.textContent = "正解です．おめでとう!";
-      console.log("正解です．おめでとう!");
     }else if(yoso < kotae){
       let p4 = document.querySelector('p#result');
       p4.textContent = "まちがい、答えはもっと大さいですよ";
