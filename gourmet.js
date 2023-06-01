@@ -203,5 +203,56 @@ let data = {
 for(let n of data.results.shop){
   console.log(n.name);
 }
+let b = document.querySelector('#sagasu');
+b.addEventListener('click', kensaku);
 
+function kensaku() {
+  //ジャンルを区別する
+	let junru =  document.querySelector('option#value');
+  console.log(junru);
+  //ここから検索内容を表示
+  let da = document.querySelector('#sagasu');
+  let w = document.querySelector('p');
+  w.remove();
+  let url = 'https://www.nishita-lab.org/web-contents/jsons/hotpepper/G006.json';//いったんイタリアン料理だけ
+  axios.get(url)
+        .then(showResult)   // 通信成功
+        .catch(showError)   // 通信失敗
+        .then(finish);
+  // 通信が成功した時の処理
+function showResult(resp) {
+  // サーバから送られてきたデータを出力
+  let data = resp.data;
 
+  // data が文字列型なら，オブジェクトに変換する
+  if (typeof data === 'string') {
+      data = JSON.parse(data);
+  }
+
+  // data をコンソールに出力
+  //console.log(data);
+  let gr;
+  let bt = document.querySelector('button#sagasu');	
+  for(let n of data.results.shop){ 
+    gr = document.createElement('p');
+    bt.insertAdjacentElement('afterend', gr);
+    gr.textContent = (n.name);
+    //console.log(n.name);
+  }
+  
+  
+
+  // data.x を出力
+  //console.log(data.x);
+}
+
+// 通信エラーが発生した時の処理
+function showError(err) {
+  console.log(err);
+}
+
+// 通信の最後にいつも実行する処理
+function finish() {
+  console.log('Ajax 通信が終わりました');
+}
+}
