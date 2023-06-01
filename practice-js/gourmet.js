@@ -204,3 +204,4 @@ for(let n of data.results.shop){
   console.log(n.name);
 }
 
+
