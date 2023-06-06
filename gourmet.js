@@ -215,15 +215,13 @@ function kensaku() {
   console.log(junru.textContent);
   let genre;
   if(n < 9){
-    genre = "G00" + n;
+    genre = "G00" + (n + 1);
   }else {
-    genre = "G0" + n;
+    genre = "G0" + (n + 1);
   }
   //ここから検索内容を表示
   let da = document.querySelector('#sagasu');
-  let w = document.querySelector('p');
-  w.remove();
-  let url = 'https://www.nishita-lab.org/web-contents/jsons/hotpepper/{genre}.json';//いったんイタリアン料理だけ
+  let url = 'https://www.nishita-lab.org/web-contents/jsons/hotpepper/'+ genre +'.json';//いったんイタリアン料理だけ
   axios.get(url)
         .then(showResult)   // 通信成功
         .catch(showError)   // 通信失敗
@@ -237,14 +235,19 @@ function showResult(resp) {
   if (typeof data === 'string') {
       data = JSON.parse(data);
   }
+  //削除プログラム
 
+  let w = document.querySelector('div#naiyo');			// li#whale 要素を検索
+  w.remove();	
   // data をコンソールに出力
   //console.log(data);
   let gr;
-  let bt = document.querySelector('button#sagasu');	
+  let bt = document.querySelector('button#sagasu');
+  let div = document.querySelector('div#naiyo');
+  bt.insertAdjacentElement('afterend', div);
   for(let n of data.results.shop){ 
     gr = document.createElement('p');
-    bt.insertAdjacentElement('afterend', gr);
+    div.insertAdjacentElement('beforeend', gr);
     gr.textContent = (n.name);
     //console.log(n.name);
   }
