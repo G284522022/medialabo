@@ -208,13 +208,22 @@ b.addEventListener('click', kensaku);
 
 function kensaku() {
   //ジャンルを区別する
-	let junru =  document.querySelector('option#value');
-  console.log(junru);
+	let s = document.querySelector('select#sentaku');
+  let n = s.selectedIndex;  // idx 番目の option が選択された
+  let os = s.querySelectorAll('option');  // s の子要素 option をすべて検索
+  let junru = os.item(n);
+  console.log(junru.textContent);
+  let genre;
+  if(n < 9){
+    genre = "G00" + n;
+  }else {
+    genre = "G0" + n;
+  }
   //ここから検索内容を表示
   let da = document.querySelector('#sagasu');
   let w = document.querySelector('p');
   w.remove();
-  let url = 'https://www.nishita-lab.org/web-contents/jsons/hotpepper/G006.json';//いったんイタリアン料理だけ
+  let url = 'https://www.nishita-lab.org/web-contents/jsons/hotpepper/{genre}.json';//いったんイタリアン料理だけ
   axios.get(url)
         .then(showResult)   // 通信成功
         .catch(showError)   // 通信失敗
