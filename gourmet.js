@@ -203,6 +203,10 @@ let data = {
 for(let n of data.results.shop){
   console.log(n.name);
 }
+for(let i = 0;i < data.results.shop.length;i++){
+  console.log(data.results.shop[i].name);
+}
+let c = 0;
 let b = document.querySelector('#sagasu');
 b.addEventListener('click', kensaku);
 
@@ -236,31 +240,58 @@ function showResult(resp) {
       data = JSON.parse(data);
   }
   //削除プログラム
-
-  let w = document.querySelector('div#naiyo');			// li#whale 要素を検索
-  w.remove();	
+  if(c !== 0){
+    let sp = document.querySelectorAll('p');
+    let h2 = document.querySelectorAll('h2');
+    for(let h2r of h2){
+      h2r.remove();
+    }
+    for (let pm of sp){
+      pm.remove();
+    }
+  }
   // data をコンソールに出力
   //console.log(data);
+  //div 要素追加
+  let di = document.createElement('div');
   let gr;
+  let h2;
   let bt = document.querySelector('button#sagasu');
+  bt.insertAdjacentElement('afterend',di);
+  let a = document.createElement('div');
   let div = document.querySelector('div#naiyo');
-  bt.insertAdjacentElement('afterend', div);
   for(let n of data.results.shop){ 
+    h2 = document.createElement('h2');
+    div.insertAdjacentElement('beforeend', h2);
+    h2.textContent = (n.name);
     gr = document.createElement('p');
-    div.insertAdjacentElement('beforeend', gr);
-    gr.textContent = (n.name);
-    //console.log(n.name);
+    h2.insertAdjacentElement('afterend',gr);
+    gr.textContent = ("店のアクセス情報：" + n.access);
+    gr = document.createElement('p');
+    h2.insertAdjacentElement('afterend',gr);
+    gr.textContent = ("お店の住所：" + n.address);
+    gr = document.createElement('p');
+    h2.insertAdjacentElement('afterend',gr);
+    gr.textContent = ("お値段：" + n.budget.name);
+    gr = document.createElement('p');
+    h2.insertAdjacentElement('afterend',gr);
+    gr.textContent = ("店のキャッチコピー：" + n.catch);
+    gr = document.createElement('p');
+    h2.insertAdjacentElement('afterend',gr);
+    gr.textContent = ("お店の営業日時：" + n.open);
+    gr = document.createElement('p');
+    h2.insertAdjacentElement('afterend',gr);
+    gr.textContent = ("お店の最寄駅：" + n.station_name);
   }
-  
-  
-
-  // data.x を出力
-  //console.log(data.x);
+  c = c + 1;
 }
 
 // 通信エラーが発生した時の処理
 function showError(err) {
-  console.log(err);
+  let p = document.createElement('p');			// 新しい a要素を作成
+  let div = document.querySelector('div#naiyo');
+  div.insertAdjacentElement('afterend', p);
+  p.textContent = 'もう一度やり直してください';
 }
 
 // 通信の最後にいつも実行する処理
