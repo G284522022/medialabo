@@ -1,3 +1,11 @@
 body {
-    background-color: rgba(255, 160, 65, 0.679);
+    background-color: rgba(255, 201, 65, 0.848);
+}
+h2{
+    text-align: center;
+    font-size: 40px;
+}
+p{
+    font-size: 20px;
+    border: solid;
 }
