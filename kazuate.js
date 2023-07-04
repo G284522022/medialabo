@@ -15,7 +15,7 @@ function hantei() {
   let y = document.querySelector('span#answer');
   y.textContent = yoso;
   if(kaisu < 5){
-    if(yoso === kotae){
+    if(yoso == kotae){
       let p4 = document.querySelector('p#result');
       p4.textContent = "正解です．おめでとう!";
     }else if(yoso < kotae){
